@@ -1,0 +1,10 @@
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.csprojAssemblyReference.cache
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.Properties.Resources.resources
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.csproj.GenerateResource.cache
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.csproj.CoreCompileInputs.cache
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\bin\Debug\simplepaint.exe.config
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\bin\Debug\simplepaint.exe
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\bin\Debug\simplepaint.pdb
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.exe
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.pdb
+C:\Users\algot.lindblom1\source\repos\simplepaint\simplepaint\obj\Debug\simplepaint.Form1.resources
