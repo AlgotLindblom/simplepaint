@@ -38,6 +38,7 @@ namespace simplepaint
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
+            this.shapeChoiceBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.rityta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -71,7 +72,7 @@ namespace simplepaint
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pBoxColorDialog);
-            this.groupBox1.Location = new System.Drawing.Point(627, 181);
+            this.groupBox1.Location = new System.Drawing.Point(627, 371);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(98, 100);
             this.groupBox1.TabIndex = 2;
@@ -100,18 +101,32 @@ namespace simplepaint
             // widthSelectorGroup
             // 
             this.widthSelectorGroup.Controls.Add(this.widthSelectionBar);
-            this.widthSelectorGroup.Location = new System.Drawing.Point(585, 97);
+            this.widthSelectorGroup.Location = new System.Drawing.Point(585, 287);
             this.widthSelectorGroup.Name = "widthSelectorGroup";
             this.widthSelectorGroup.Size = new System.Drawing.Size(179, 78);
             this.widthSelectorGroup.TabIndex = 4;
             this.widthSelectorGroup.TabStop = false;
             this.widthSelectorGroup.Text = "Tjocklek";
             // 
+            // shapeChoiceBox
+            // 
+            this.shapeChoiceBox.FormattingEnabled = true;
+            this.shapeChoiceBox.Items.AddRange(new object[] {
+            "Pen",
+            "Rectangle",
+            "Ellips"});
+            this.shapeChoiceBox.Location = new System.Drawing.Point(630, 56);
+            this.shapeChoiceBox.Name = "shapeChoiceBox";
+            this.shapeChoiceBox.Size = new System.Drawing.Size(84, 43);
+            this.shapeChoiceBox.TabIndex = 5;
+            this.shapeChoiceBox.SelectedIndexChanged += new System.EventHandler(this.shapeChoiceBox_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 575);
+            this.Controls.Add(this.shapeChoiceBox);
             this.Controls.Add(this.widthSelectorGroup);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -141,6 +156,7 @@ namespace simplepaint
         private System.Windows.Forms.PictureBox pBoxColorDialog;
         private System.Windows.Forms.ColorDialog colorDialog2;
         private System.Windows.Forms.ColorDialog colorDialog3;
+        private System.Windows.Forms.ListBox shapeChoiceBox;
     }
 }
 

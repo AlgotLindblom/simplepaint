@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static simplepaint.Composer;
 
 namespace simplepaint
 {
@@ -17,28 +18,56 @@ namespace simplepaint
 
         public Form1()
         {
+
             InitializeComponent();
             c.InitializeDrawingSurface();
             widthSelectionBar.Value = 4;
+            shapeChoiceBox.SelectedIndex = 0;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
         private void rityta_MouseDown(object sender, MouseEventArgs e)
         {
-            c.Down(e);
+            switch (shapeChoiceBox.SelectedIndex)
+            {
+                case 0:
+                    c.Down_IfLine(e);
+                    break;
+                case 1:
+                    c.Down_IfRectangle(e);
+                    break;
+                case 2:
+                    c.Down_IfEllipse(e);
+                    break;
+            }
+            
         }
 
         private void rityta_MouseMove(object sender, MouseEventArgs e)
         {
-            c.Draw(rityta, e);
+            if(shapeChoiceBox.SelectedIndex == 0)
+            { 
+                c.Draw_IfLine(rityta, e); 
+            }
         }
 
         private void rityta_MouseUp(object sender, MouseEventArgs e)
         {
-            c.Up();         // Användaren har slutat rita och släppt musknappen
+            // Användaren har slutat rita och släppt musknappen
+            switch (shapeChoiceBox.SelectedIndex)
+            {
+                case 0:
+                    c.Up_IfLine();
+                    break;
+                case 1:
+                    c.Up_IfRectangle(rityta, e);
+                    break;
+                case 2:
+                    c.Up_IfEllipse(rityta, e);
+                    break;
+            }
         }
 
         private void rityta_Paint(object sender, PaintEventArgs e)
@@ -55,79 +84,22 @@ namespace simplepaint
 
         private void widthSelectionBar_ValueChanged(object sender, EventArgs e)
         {
-            c.SetWidth(widthSelectionBar.Value);    // Enkel väljare för tjpocklek
+            c.SetWidth(widthSelectionBar.Value);    // Enkel väljare för tjocklek
         }
 
         private void pBoxColorDialog_Click(object sender, EventArgs e)
         {
             c.SetColor(pBoxColorDialog);
         }
-    }
-    public class Composer
-    {
-        private bool isDrawing = false;     // En flagga som indikerar om användaren är i färd med att rita eller inte.
-        private Point previousPoint;        // Håller koll på den tidigare muspositionen för att rita linjer.
-        // private Color colorChoice;   Onödig med ColorDialog
-        private float width;
-        private ColorDialog colorPicker = new ColorDialog();
+        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-        // Deklarera en bitmap för att lagra ritområdet
-        private Bitmap drawingSurface = new Bitmap(800, 600);
+        }
 
-        public Composer()
+        private void shapeChoiceBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            colorPicker.Color = Color.Black;
-            width = 4;
-        }
-        public void InitializeDrawingSurface()
-        {
-            using (Graphics g = Graphics.FromImage(drawingSurface))
-            {
-                g.Clear(Color.White);
-            }
-        }
-        public void Up()
-        {
-            isDrawing = false;
-        }
-        public void Down(MouseEventArgs e)
-        {
-            isDrawing = true;                   // Användaren har börjat rita                
-            previousPoint = e.Location;         // Sparar positionen där muspekaren befann sig när ritningen påbörjades i previousPoint
-        }
-        public void Draw(PictureBox rityta, MouseEventArgs e)
-        {
-            if (isDrawing)
-            {
-                using (Graphics g = Graphics.FromImage(drawingSurface))
-                {
-                    // Skapa en penna med svart färg och tjocklek 4
-                    Pen pen = new Pen(colorPicker.Color, width);
-
-                    // Rita en linje från föregående musposition till nuvarande musposition med den svarta pennan
-                    g.DrawLine(pen, previousPoint, e.Location);
-                    g.DrawRectangle(pen, new Rectangle(e.Location.X, e.Location.Y, (int)width, (int)width));
-                }
-                previousPoint = e.Location;
-
-                // Uppdatera PictureBox för att visa de ändringar som gjorts på ritområdet
-                rityta.Invalidate();
-            }
-        }
-        public void PaintEvent(PaintEventArgs e)
-        {
-            e.Graphics.DrawImage(drawingSurface, Point.Empty);  // Rita till ritytan när PaintEvent kallas
-        }
-        public void SetColor(PictureBox item) 
-        {
-            if(colorPicker.ShowDialog() == DialogResult.OK)
-            {
-                item.BackColor = colorPicker.Color;
-            }
-        }
-        public void SetWidth(float val)
-        {
-            width = val;
+                     
         }
     }
 }
