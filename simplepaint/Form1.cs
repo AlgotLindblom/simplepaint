@@ -18,7 +18,6 @@ namespace simplepaint
 
         public Form1()
         {
-
             InitializeComponent();
             c.InitializeDrawingSurface();
             widthSelectionBar.Value = 4;
@@ -48,8 +47,8 @@ namespace simplepaint
         private void rityta_MouseMove(object sender, MouseEventArgs e)
         {
             if(shapeChoiceBox.SelectedIndex == 0)
-            { 
-                c.Draw_IfLine(rityta, e); 
+            {
+                c.Move_IfLine(rityta, e);
             }
         }
 
@@ -91,15 +90,16 @@ namespace simplepaint
         {
             c.SetColor(pBoxColorDialog);
         }
-        
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void shapeChoiceBox_SelectedIndexChanged(object sender, EventArgs e)
         {
                      
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            rityta.Image = c.drawingSurface;
+            rityta.Image.Save($"\\images\\{rityta.Image.GetHashCode()}.png", ImageFormat.png);
         }
     }
 }

@@ -39,12 +39,16 @@ namespace simplepaint
             this.colorDialog2 = new System.Windows.Forms.ColorDialog();
             this.colorDialog3 = new System.Windows.Forms.ColorDialog();
             this.shapeChoiceBox = new System.Windows.Forms.ListBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.helpBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rityta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBoxColorDialog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.widthSelectionBar)).BeginInit();
             this.widthSelectorGroup.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rityta
@@ -72,9 +76,9 @@ namespace simplepaint
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.pBoxColorDialog);
-            this.groupBox1.Location = new System.Drawing.Point(627, 371);
+            this.groupBox1.Location = new System.Drawing.Point(687, 96);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(98, 100);
+            this.groupBox1.Size = new System.Drawing.Size(66, 64);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Färgval";
@@ -82,9 +86,9 @@ namespace simplepaint
             // pBoxColorDialog
             // 
             this.pBoxColorDialog.BackColor = System.Drawing.Color.Black;
-            this.pBoxColorDialog.Location = new System.Drawing.Point(22, 29);
+            this.pBoxColorDialog.Location = new System.Drawing.Point(15, 19);
             this.pBoxColorDialog.Name = "pBoxColorDialog";
-            this.pBoxColorDialog.Size = new System.Drawing.Size(51, 48);
+            this.pBoxColorDialog.Size = new System.Drawing.Size(37, 33);
             this.pBoxColorDialog.TabIndex = 5;
             this.pBoxColorDialog.TabStop = false;
             this.pBoxColorDialog.Click += new System.EventHandler(this.pBoxColorDialog_Click);
@@ -101,9 +105,9 @@ namespace simplepaint
             // widthSelectorGroup
             // 
             this.widthSelectorGroup.Controls.Add(this.widthSelectionBar);
-            this.widthSelectorGroup.Location = new System.Drawing.Point(585, 287);
+            this.widthSelectorGroup.Location = new System.Drawing.Point(585, 12);
             this.widthSelectorGroup.Name = "widthSelectorGroup";
-            this.widthSelectorGroup.Size = new System.Drawing.Size(179, 78);
+            this.widthSelectorGroup.Size = new System.Drawing.Size(168, 78);
             this.widthSelectorGroup.TabIndex = 4;
             this.widthSelectorGroup.TabStop = false;
             this.widthSelectorGroup.Text = "Tjocklek";
@@ -115,18 +119,49 @@ namespace simplepaint
             "Pen",
             "Rectangle",
             "Ellips"});
-            this.shapeChoiceBox.Location = new System.Drawing.Point(630, 56);
+            this.shapeChoiceBox.Location = new System.Drawing.Point(6, 15);
             this.shapeChoiceBox.Name = "shapeChoiceBox";
             this.shapeChoiceBox.Size = new System.Drawing.Size(84, 43);
             this.shapeChoiceBox.TabIndex = 5;
             this.shapeChoiceBox.SelectedIndexChanged += new System.EventHandler(this.shapeChoiceBox_SelectedIndexChanged);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.shapeChoiceBox);
+            this.groupBox2.Location = new System.Drawing.Point(585, 96);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(96, 64);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ritverktyg";
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(595, 166);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 7;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // helpBtn
+            // 
+            this.helpBtn.Location = new System.Drawing.Point(678, 166);
+            this.helpBtn.Name = "helpBtn";
+            this.helpBtn.Size = new System.Drawing.Size(75, 23);
+            this.helpBtn.TabIndex = 8;
+            this.helpBtn.Text = "Help";
+            this.helpBtn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 575);
-            this.Controls.Add(this.shapeChoiceBox);
+            this.ClientSize = new System.Drawing.Size(763, 575);
+            this.Controls.Add(this.helpBtn);
+            this.Controls.Add(this.saveBtn);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.widthSelectorGroup);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
@@ -141,6 +176,7 @@ namespace simplepaint
             ((System.ComponentModel.ISupportInitialize)(this.widthSelectionBar)).EndInit();
             this.widthSelectorGroup.ResumeLayout(false);
             this.widthSelectorGroup.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -157,6 +193,9 @@ namespace simplepaint
         private System.Windows.Forms.ColorDialog colorDialog2;
         private System.Windows.Forms.ColorDialog colorDialog3;
         private System.Windows.Forms.ListBox shapeChoiceBox;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button helpBtn;
     }
 }
 
