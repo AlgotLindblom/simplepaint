@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -72,10 +73,17 @@ namespace simplepaint
 
         public void Up_IfRectangle(PictureBox rityta, MouseEventArgs e)
         {
+            // Av någon anledning fungerar enbart DrawRectangle om Rectangle har positiv height och width.
+            // Detta krävs inte för DrawEllipse.
+            Point currentPoint = e.Location;
             using (Graphics g = Graphics.FromImage(drawingSurface))
             {
                 Pen pen = new Pen(colorPicker.Color, width);
-                g.DrawRectangle(pen, new Rectangle(previousPoint.X, previousPoint.Y, (e.Location.X-previousPoint.X), (e.Location.Y-previousPoint.Y)));
+                int x = Math.Min(previousPoint.X, currentPoint.X);
+                int y = Math.Min(previousPoint.Y, currentPoint.Y);
+                int w = Math.Abs(currentPoint.X - previousPoint.X);
+                int h = Math.Abs(currentPoint.Y - previousPoint.Y);
+                g.DrawRectangle(pen, new Rectangle(x, y, w, h));
             }
             rityta.Invalidate();
         }
@@ -112,6 +120,17 @@ namespace simplepaint
         public void SetWidth(float val)
         {
             width = val;
+        }
+
+        public void Save()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "PNG files (*.png)|*.png";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Spara bilden på den valda sökvägen som PNG
+                drawingSurface.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
         }
     }
 }

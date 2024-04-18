@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static simplepaint.Composer;
+using static simplepaint.Composer; // Ta bort denna om du
 
 namespace simplepaint
 {
@@ -98,8 +98,7 @@ namespace simplepaint
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            rityta.Image = c.drawingSurface;
-            rityta.Image.Save($"\\images\\{rityta.Image.GetHashCode()}.png", ImageFormat.png);
+            c.Save();
         }
     }
 }
